@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom"; // Importer useNavigate
 import frenchToEnglishMap from "../utils/pokemonNameTranslations";
 import statsTranslation from "../utils/pokemonStatsTranslations";
 import typesTranslation from "../utils/pokemonTypeTranslations";
@@ -9,12 +9,25 @@ export default function PokemonSearch() {
   const [inputName, setInputName] = useState("");
   const [selectedPokemon, setSelectedPokemon] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [pokemonList, setPokemonList] = useState([]); // Liste des Pokémon
-  const [suggestions, setSuggestions] = useState([]); // Suggestions filtrées
+  const [pokemonList, setPokemonList] = useState([]);
+  const [suggestions, setSuggestions] = useState([]);
   const location = useLocation();
+  const navigate = useNavigate(); // Initialiser useNavigate
+  const searchParams = new URLSearchParams(location.search);
 
   useEffect(() => {
-    // Récupérer tous les noms des Pokémon
+    // Vérifiez si aucun paramètre n'est présent et redirigez vers la page de base
+    const pokemonNameFromQuery = searchParams.get("pokemon");
+    if (!pokemonNameFromQuery) {
+      navigate("/"); // Redirige vers la page d'accueil
+      return;
+    }
+
+    fetchPokemon(pokemonNameFromQuery);
+  }, [location.search, navigate]);
+
+  useEffect(() => {
+    // Récupérer tous les noms des Pokémon pour les suggestions
     const fetchPokemonList = async () => {
       try {
         const response = await axios.get("https://pokeapi.co/api/v2/pokemon?limit=1000");
@@ -25,14 +38,7 @@ export default function PokemonSearch() {
     };
 
     fetchPokemonList();
-
-    // Récupérer les paramètres de recherche dans l'URL
-    const searchParams = new URLSearchParams(location.search);
-    const pokemonNameFromQuery = searchParams.get("pokemon");
-    if (pokemonNameFromQuery) {
-      fetchPokemon(pokemonNameFromQuery);
-    }
-  }, [location.search]);
+  }, []);
 
   const normalizeInput = (name) => name.trim().toLowerCase();
 
@@ -78,7 +84,7 @@ export default function PokemonSearch() {
     const filteredSuggestions = pokemonList.filter((pokemon) =>
       pokemon.toLowerCase().startsWith(value.toLowerCase())
     );
-    setSuggestions(filteredSuggestions.slice(0, 5)); // Limiter à 5 suggestions
+    setSuggestions(filteredSuggestions.slice(0, 5));
   };
 
   const handleSearch = () => {
@@ -95,7 +101,7 @@ export default function PokemonSearch() {
 
   return (
     <div className="pokemon-search">
-      <h2><a href="../">Poké Search</a></h2>
+      <h2>Poké Search</h2>
       <div className="search-input">
         <input
           type="text"
