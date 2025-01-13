@@ -101,7 +101,7 @@ export default function PokemonSearch() {
 
   return (
     <div className="pokemon-search">
-      <h2>Poké Search</h2>
+      <h2><a href="../">Poké Search</a></h2>
       <div className="search-input">
         <input
           type="text"
