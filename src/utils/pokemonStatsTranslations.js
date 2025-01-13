@@ -1,0 +1,10 @@
+const statsTranslation = {
+    "hp": "PV",
+    "attack": "Attaque",
+    "defense": "Défense",
+    "special-attack": "Attaque Spéciale",
+    "special-defense": "Défense Spéciale",
+    "speed": "Vitesse",
+  };
+
+  export default statsTranslation;

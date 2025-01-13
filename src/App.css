@@ -1,0 +1,241 @@
+:root {
+  --primary-color: #ff5350;
+  --secondary-color: #3d7dca;
+  --background-color: #f0f0f0;
+  --text-color: #333;
+  --card-background: #ffffff;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+h2 {
+  text-transform: uppercase;
+}
+
+.title {
+  text-align: center;
+}
+
+.App {
+  text-align: center;
+  padding: 20px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: var(--card-background);
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.title {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: var(--primary-color);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.search-container {
+  margin-top: 40px;
+}
+
+.small-generation {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px; /* Ajustez selon vos besoins */
+}
+
+.generation-slide {
+  padding: 20px;
+  background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+  border-radius: 8px;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.pokemon-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center; /* Centrer dynamiquement */
+}
+
+.pokemon-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px; /* Espacement entre les Pokémon */
+}
+
+.pokemon-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 18%; /* Assurez-vous que 5 éléments tiennent sur une ligne */
+}
+
+.pokemon-sprite {
+  width: 100px;
+  height: 150px;
+  cursor: pointer;
+}
+
+.pokemon-name {
+  font-size: 14px;
+  text-align: center;
+  margin-top: 5px;
+}
+
+.pokemon-sprite:hover {
+  transform: scale(1.05);
+}
+
+.pokemon-search {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.search-input {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.search-input input {
+  flex-grow: 1;
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid var(--secondary-color);
+  border-radius: 4px 0 0 4px;
+  outline: none;
+}
+
+.search-input button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: var(--secondary-color);
+  color: white;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-input button:hover {
+  background-color: #2a5a9c;
+}
+
+.pokemon-details {
+  margin-top: 20px;
+  background-color: var(--card-background);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.pokemon-image {
+  width: 100px;
+  height: auto;
+  margin: 10px;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.pokemon-stats ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.pokemon-stats li {
+  margin-bottom: 5px;
+  background-color: var(--primary-color);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+
+.generation-slide {
+  height: min-content;
+}
+
+.generation-cards {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.generation-section {
+  margin-bottom: 40px;
+}
+
+.generation-section h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 15px;
+  justify-items: center;
+}
+
+.pokemon-card {
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.pokemon-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.pokemon-card-image {
+  width: 80px;
+  height: 80px;
+}
+
+.pokemon-card-name {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #555;
+}
+
+.suggestions-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  margin-top: 42px;
+  background: #f8f8f8;
+  border: 1px solid #ccc;
+  max-width: 300px;
+  position: absolute;
+  z-index: 1000;
+}
+
+.suggestion-item {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.suggestion-item:hover {
+  background: #ddd;
+}
